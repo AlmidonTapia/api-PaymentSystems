@@ -27,7 +27,7 @@ public class BussinesEstudent {
             throw new Exception("Ya existe un estudiante con el DNI: " + dtoEstudent.getDni());
         }
 
-        dtoEstudent.setIdEstudent(UUID.randomUUID().toString());
+        dtoEstudent.setIdEstudent(UUID.randomUUID());
         dtoEstudent.setCreatedAt(LocalDateTime.now());
         dtoEstudent.setUpdatedAt(LocalDateTime.now());
 
@@ -81,7 +81,7 @@ public class BussinesEstudent {
     }
 
     @Transactional
-    public boolean delete(String idEstudent) {
+    public boolean delete(UUID idEstudent) {
         Optional<TEstudent> tEstudent = repoEstudent.findByIdEstudent(idEstudent);
 
         if (tEstudent.isPresent()) {

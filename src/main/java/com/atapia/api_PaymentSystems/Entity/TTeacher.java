@@ -3,10 +3,13 @@ package com.atapia.api_PaymentSystems.Entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +22,7 @@ public class TTeacher implements Serializable {
 
     @Id
     @Column(name = "idTeacher")
-    private String idTeacher;
+    private UUID idTeacher;
 
     @Column(name = "firstName")
     private String firstName;
@@ -50,5 +53,10 @@ public class TTeacher implements Serializable {
 
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
+
+    //#region
+    @OneToMany(mappedBy = "teacher")
+    private List<TCourse> courses;
+    //#endregion
 
 }
