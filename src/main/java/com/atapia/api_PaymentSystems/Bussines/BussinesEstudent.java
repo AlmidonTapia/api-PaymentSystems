@@ -45,7 +45,7 @@ public class BussinesEstudent {
                     dtoEstudent.getSurName());
             testudent.setCodEst(studentCode);
 
-            testudent.setGender(dtoEstudent.isGender());
+            testudent.setGender(dtoEstudent.getGender());
             testudent.setBirthDate(dtoEstudent.getBirthDate());
             testudent.setCreatedAt(dtoEstudent.getCreatedAt());
             testudent.setUpdatedAt(dtoEstudent.getUpdatedAt());
@@ -69,7 +69,7 @@ public class BussinesEstudent {
             dtoEstudent.setEmail(tEstudent.getEmail());
             dtoEstudent.setPhoneNumber(tEstudent.getPhoneNumber());
             dtoEstudent.setCodEst(tEstudent.getCodEst());
-            dtoEstudent.setGender(tEstudent.isGender());
+            dtoEstudent.setGender(tEstudent.getGender());
             dtoEstudent.setBirthDate(tEstudent.getBirthDate());
             dtoEstudent.setCreatedAt(tEstudent.getCreatedAt());
             dtoEstudent.setUpdatedAt(tEstudent.getUpdatedAt());
@@ -81,14 +81,15 @@ public class BussinesEstudent {
     }
 
     @Transactional
-    public boolean delete(UUID idEstudent) {
+    public boolean delete(UUID idEstudent) throws Exception {
         Optional<TEstudent> tEstudent = repoEstudent.findByIdEstudent(idEstudent);
 
         if (tEstudent.isPresent()) {
             repoEstudent.deleteById(idEstudent);
+            return true;
+        } else {
+            throw new Exception("No se encontró el estudiante con el ID: " + idEstudent);
         }
-
-        return true;
     }
 
     @Transactional
@@ -97,18 +98,19 @@ public class BussinesEstudent {
 
         if (tEstudent.isPresent()) {
             TEstudent testudent = tEstudent.get();
+
             testudent.setFirstName(dtoEstudent.getFirstName());
             testudent.setSurName(dtoEstudent.getSurName());
             testudent.setDni(dtoEstudent.getDni());
             testudent.setEmail(dtoEstudent.getEmail());
             testudent.setPhoneNumber(dtoEstudent.getPhoneNumber());
-            testudent.setGender(dtoEstudent.isGender());
+            testudent.setGender(dtoEstudent.getGender());
             testudent.setBirthDate(dtoEstudent.getBirthDate());
             testudent.setUpdatedAt(LocalDateTime.now());
 
             repoEstudent.save(testudent);
         } else {
-            throw new Exception("No se encontro el estudiante con el id: " + dtoEstudent.getIdEstudent());
+            throw new Exception("No se encontró el estudiante con el ID: " + dtoEstudent.getIdEstudent());
         }
     }
 
@@ -138,7 +140,7 @@ public class BussinesEstudent {
             dtoEstudent.setEmail(tEstudent.get().getEmail());
             dtoEstudent.setPhoneNumber(tEstudent.get().getPhoneNumber());
             dtoEstudent.setCodEst(tEstudent.get().getCodEst());
-            dtoEstudent.setGender(tEstudent.get().isGender());
+            dtoEstudent.setGender(tEstudent.get().getGender());
             dtoEstudent.setBirthDate(tEstudent.get().getBirthDate());
             dtoEstudent.setCreatedAt(tEstudent.get().getCreatedAt());
             dtoEstudent.setUpdatedAt(tEstudent.get().getUpdatedAt());
@@ -164,7 +166,7 @@ public class BussinesEstudent {
             dtoEstudent.setEmail(tEstudent.get().getEmail());
             dtoEstudent.setPhoneNumber(tEstudent.get().getPhoneNumber());
             dtoEstudent.setCodEst(tEstudent.get().getCodEst());
-            dtoEstudent.setGender(tEstudent.get().isGender());
+            dtoEstudent.setGender(tEstudent.get().getGender());
             dtoEstudent.setBirthDate(tEstudent.get().getBirthDate());
             dtoEstudent.setCreatedAt(tEstudent.get().getCreatedAt());
             dtoEstudent.setUpdatedAt(tEstudent.get().getUpdatedAt());

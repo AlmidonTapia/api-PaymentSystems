@@ -2,6 +2,8 @@ package com.atapia.api_PaymentSystems.Service.Estudent.RequestObject;
 
 import java.time.LocalDate;
 
+import com.atapia.api_PaymentSystems.Enums.Gender;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +15,7 @@ public class RequestInsert {
     private String dni;
     private String email;
     private String phoneNumber;
-    private boolean gender;
+    private Gender gender;
     private LocalDate birthDate;
 
 }

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.atapia.api_PaymentSystems.Enums.Gender;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +19,7 @@ public class TEstudentDto {
     private String email;
     private String phoneNumber;
     private String codEst;
-    private boolean gender;
+    private Gender gender;
     private LocalDate birthDate;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -6,8 +6,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.atapia.api_PaymentSystems.Enums.Gender;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -42,8 +46,9 @@ public class TEstudent implements Serializable {
     @Column(name = "codEst", unique = true)
     private String codEst;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private boolean gender;
+    private Gender gender;
 
     @Column(name = "birthDate")
     private LocalDate birthDate;
